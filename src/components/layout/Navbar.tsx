@@ -18,7 +18,7 @@ export default function Navbar() {
             alt={site.name}
             width={609}
             height={356}
-            className="h-8 w-auto"
+            className="h-7 w-auto object-contain"
             priority
           />
         </Link>

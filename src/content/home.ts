@@ -56,20 +56,24 @@ export const studio = {
 } as const;
 
 export const creators = {
-  eyebrow: "Creator Network",
+  eyebrow: "CREATOR NETWORK",
   title: "A network that amplifies.",
   intro:
-    "We collaborate with creators who help push your message further than we could alone.",
+    "We connect your business with creators whose audiences already care about what you sell.",
+  flow: ["Your Business", "Nexus", "Right Creator", "Right Audience"],
   items: [
-    { role: "Content Creators", description: "Voices that produce and carry your story." },
-    { role: "Editors", description: "Craft that turns raw footage into finished work." },
-    { role: "Photographers", description: "Images that give your brand its look." },
+    { title: "Content Creators", description: "Voices who produce and carry your story to the right people." },
+    { title: "Editors", description: "Craft that turns raw footage into finished, publishable work." },
+    { title: "Photographers", description: "Images that give your brand a consistent, professional look." },
   ],
+  cta: { label: "Join the creator network →", href: "/start-a-project" },
 } as const;
 
 export const finalCta = {
-  title: "Not every problem has a generic answer.",
-  subtitle: "Tell us where your business stands online, and we will diagnose the rest.",
+  eyebrow: "GET STARTED",
+  title: "Ready to diagnose your business?",
+  subtitle:
+    "Tell us where your business stands online. We'll reply within 24 hours with a preliminary roadmap — no obligation.",
   primaryCta: { label: "Start a Project", href: "/start-a-project" },
-  secondaryCta: { label: "Explore Services", href: "/services" },
+  secondaryCta: { label: "or explore our services →", href: "/services" },
 } as const;
