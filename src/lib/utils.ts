@@ -1,6 +1,7 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+/**
+ * Tiny className composer. Kept dependency-free so the project stays light.
+ * Accepts strings, and skips falsy values.
+ */
+export function cn(...classes: (string | false | undefined | null)[]) {
+  return classes.filter(Boolean).join(" ");
 }

@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Nexus — Dark Premium Theme (matched to logo)
+   Background: Near-black #0A0A0F
+   Primary: Violet #7B2FF7
+   Secondary: Magenta #E91E8C
+   Highlight: Orange #FF8A00 / Amber #FFC83D
+   Text: White #FFFFFF / Off-white
+   Muted: #A8A9C2
+   ========================================================================== */
+
+:root {
+  /* Ground & surfaces */
+  --ks-bg: #0A0A0F;
+  --ks-surface: #14141B;
+  --ks-surface-deep: #0E0E14;
+  --ks-border: #2A2A33;
+
+  /* Text */
+  --ks-text: #FFFFFF;
+  --ks-body: #E5E5EB;
+  --ks-muted: #A8A9C2;
+  --ks-faint: #737382;
+
+  /* Brand — from logo gradient */
+  --ks-brand: #7B2FF7;        /* violet — primary */
+  --ks-brand-hover: #6A24C8;
+  --ks-brand-secondary: #E91E8C; /* magenta — secondary */
+  --ks-brand-accent: #FF8A00;   /* orange — highlight */
+  --ks-brand-accent-2: #FFC83D; /* amber — highlight */
+
+  /* Brand gradient: orange -> magenta -> violet */
+  --ks-brand-gradient: linear-gradient(135deg, #FF8A00 0%, #E91E8C 50%, #7B2FF7 100%);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Motion: smooth, no bounce */
+  --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@theme inline {
+  --color-background: var(--ks-bg);
+  --color-surface: var(--ks-surface);
+  --color-surface-deep: var(--ks-surface-deep);
+  --color-border: var(--ks-border);
+  --color-foreground: var(--ks-text);
+  --color-body: var(--ks-body);
+  --color-muted: var(--ks-muted);
+  --color-faint: var(--ks-faint);
+  --color-brand: var(--ks-brand);
+  --color-brand-hover: var(--ks-brand-hover);
+  --color-brand-secondary: var(--ks-brand-secondary);
+  --color-brand-accent: var(--ks-brand-accent);
+  --color-brand-accent-2: var(--ks-brand-accent-2);
+
+  --font-sans: var(--font-sans);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+  --ease-smooth: var(--ease-smooth);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ks-bg);
+  color: var(--ks-body);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessible skip link */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.sr-only:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--ks-bg);
+  border: 1px solid var(--ks-brand);
+  color: var(--ks-text);
+  z-index: 100;
+  border-radius: var(--radius-sm);
+}
+
+/* Scroll reveal — smooth, no bounce */
+/* Default: visible (SSR-safe, no-JS fallback) */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+/* JS adds .reveal-init to hide initially on client */
+.reveal.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+}
+/* Animated in state */
+.reveal.reveal-init.revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity 700ms var(--ease-smooth), transform 700ms var(--ease-smooth);
+}
+.reveal-delay-200 { transition-delay: 200ms; }
+.reveal-delay-400 { transition-delay: 400ms; }
+.reveal-delay-600 { transition-delay: 600ms; }
+.reveal-delay-800 { transition-delay: 800ms; }
+
+section {
+  scroll-margin-top: 92px;
+}
+
+/* Utility: brand gradient text */
+.bg-brand-gradient {
+  background: var(--ks-brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Utility: brand gradient border */
+.border-brand-gradient {
+  border-image: var(--ks-brand-gradient) 1;
+}
+
+/* Reduced motion: disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.revealed {
+    transition: none !important;
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
